@@ -1,0 +1,102 @@
+.add-property-container {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.add-property-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.add-property-container input,
+.add-property-container select,
+.add-property-container textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.add-property-container textarea {
+  height: 100px;
+  resize: none;
+}
+
+
+.preview {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.preview img {
+  width: 100%;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.image-box {
+  position: relative;
+}
+
+.delete-img {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: red;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 4px 7px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.add-property-container button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background: #ff5a5f;
+  color: white;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.add-property-container button:hover {
+  background: #e14b50;
+}
+
+.edit-btn,
+.delete-btn {
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.edit-btn {
+  color: #3b82f6;
+}
+
+.delete-btn {
+  color: #ef4444;
+}
+
+.edit-btn:hover {
+  color: #1d4ed8;
+}
+
+.delete-btn:hover {
+  color: #dc2626;
+}

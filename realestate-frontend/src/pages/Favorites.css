@@ -1,0 +1,105 @@
+
+.favorites-container {
+  padding: 30px;
+  background: #f5f7fa;
+  min-height: 100vh;
+}
+
+.favorites-container h2 {
+  margin-bottom: 20px;
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.favorite-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  padding: 15px 20px;
+  margin-bottom: 20px;
+
+  background: #ffffff;
+  border-radius: 12px;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.favorite-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+
+.favorite-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+
+.favorite-image {
+  width: 140px;
+  height: 95px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+
+.favorite-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.favorite-info h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.favorite-info p {
+  margin: 0;
+  color: #666;
+}
+
+.price {
+  color: #16a34a;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+
+.remove-btn {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+
+  background: #ef4444;
+  color: white;
+
+  font-size: 14px;
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.remove-btn:hover {
+  background: #dc2626;
+  transform: scale(1.05);
+}
+
+.remove-btn:active {
+  transform: scale(0.95);
+}
+
+
+.no-favorites {
+  text-align: center;
+  margin-top: 50px;
+  color: #888;
+  font-size: 18px;
+}

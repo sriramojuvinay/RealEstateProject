@@ -1,0 +1,46 @@
+.properties-container {
+  padding: 20px 40px;
+}
+
+.properties-title {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+}
+
+.filters input,
+.filters select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.purpose-buttons button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  background: #eee;
+  cursor: pointer;
+}
+
+.purpose-buttons .active {
+  background: #ff5a5f;
+  color: white;
+}
+
+.properties-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.empty-state {
+  text-align: center;
+  width: 100%;
+}

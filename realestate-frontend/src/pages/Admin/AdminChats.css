@@ -1,0 +1,62 @@
+.admin-chats {
+  padding: 20px;
+}
+
+.admin-chats h2 {
+  margin-bottom: 20px;
+}
+
+.empty {
+  color: gray;
+  text-align: center;
+}
+
+
+.chat-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  background: #f9fafb;
+  cursor: pointer;
+  transition: 0.3s;
+  border: 1px solid #e5e7eb;
+}
+
+.chat-card:hover {
+  background: #eef2ff;
+  transform: translateY(-2px);
+}
+
+
+.chat-info h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.chat-info p {
+  margin: 2px 0;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.user {
+  font-size: 12px;
+  color: #374151;
+}
+
+
+.chat-meta {
+  font-size: 14px;
+  font-weight: bold;
+  color: #2563eb;
+}
+
+.open-btn {
+  background: #2563eb;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+}

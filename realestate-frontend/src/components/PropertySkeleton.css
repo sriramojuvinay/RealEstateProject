@@ -1,0 +1,54 @@
+
+.skeleton-card {
+  border-radius: 16px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #eee;
+}
+
+.skeleton-image {
+  height: 200px;
+  background: #ddd;
+}
+
+.skeleton-content {
+  padding: 12px;
+}
+
+.skeleton-line {
+  height: 14px;
+  background: #ddd;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.skeleton-line.small {
+  width: 60%;
+}
+
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150px;
+  width: 150px;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  animation: shimmer 1.2s infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    left: 100%;
+  }
+}

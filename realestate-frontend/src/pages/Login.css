@@ -1,0 +1,146 @@
+/* =========================
+   GLOBAL
+========================= */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* =========================
+   PAGE BACKGROUND
+========================= */
+.login-page {
+  height: 100vh;
+  width: 100%;
+
+  background: url("https://images.unsplash.com/photo-1600607687920-4e2a09cf159d")
+    no-repeat center center/cover;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+  overflow: hidden;
+}
+
+/* DARK OVERLAY */
+.login-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 0;
+}
+
+/* =========================
+   LOGIN CARD
+========================= */
+.login-container {
+  width: 100%;
+  max-width: 380px;   /* 🔥 FIXED WIDTH */
+  padding: 30px 25px;
+
+  border-radius: 16px;
+
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.4);
+
+  text-align: center;
+  color: white;
+
+  position: relative;
+  z-index: 1;
+
+  animation: fadeIn 0.6s ease;
+}
+
+/* =========================
+   TITLE
+========================= */
+.login-title {
+  margin-bottom: 20px;
+  font-size: 26px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* =========================
+   INPUTS
+========================= */
+.login-input {
+  width: 100%;
+  padding: 13px;
+  margin: 10px 0;
+
+  border-radius: 10px;
+  border: none;
+  outline: none;
+
+  font-size: 14px;
+
+  background: rgba(255, 255, 255, 0.95);
+
+  box-sizing: border-box;  /* 🔥 FIX ALIGNMENT */
+}
+
+/* FOCUS EFFECT */
+.login-input:focus {
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.6);
+}
+
+/* =========================
+   BUTTON
+========================= */
+.login-button {
+  width: 100%;
+  padding: 13px;
+  margin-top: 12px;
+
+  background: linear-gradient(135deg, #007bff, #00c6ff);
+  color: white;
+
+  border: none;
+  border-radius: 10px;
+
+  cursor: pointer;
+  font-weight: bold;
+
+  transition: all 0.3s ease;
+}
+
+/* HOVER */
+.login-button:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+/* =========================
+   ANIMATION
+========================= */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 480px) {
+  .login-container {
+    max-width: 90%;
+    padding: 20px;
+  }
+
+  .login-title {
+    font-size: 22px;
+  }
+}

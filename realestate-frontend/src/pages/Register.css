@@ -1,0 +1,148 @@
+/* =========================
+   PAGE BACKGROUND
+========================= */
+.register-page {
+  height: 100vh;
+  width: 100%;
+
+  background: url("https://images.unsplash.com/photo-1600607687920-4e2a09cf159d")
+    no-repeat center center/cover;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* DARK OVERLAY */
+.register-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 0;
+}
+
+/* =========================
+   CARD
+========================= */
+.register-card {
+  width: 100%;
+  max-width: 380px;
+  padding: 35px 25px;
+  border-radius: 16px;
+
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.4);
+
+  text-align: center;
+  color: #fff;
+
+  position: relative;
+  z-index: 1;
+
+  animation: fadeIn 0.6s ease;
+}
+
+/* =========================
+   TITLE
+========================= */
+.register-card h2 {
+  margin-bottom: 20px;
+  font-size: 26px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* =========================
+   INPUTS
+========================= */
+.register-card input,
+.register-card select {
+  width: 100%;
+  padding: 13px;
+  margin-bottom: 14px;
+
+  border-radius: 10px;
+  border: none;
+  outline: none;
+
+  font-size: 14px;
+
+  background: rgba(255, 255, 255, 0.95);
+  color: #333;
+
+  box-sizing: border-box;
+
+  transition: all 0.3s ease;
+}
+
+/* FOCUS */
+.register-card input:focus,
+.register-card select:focus {
+  box-shadow: 0 0 0 2px rgba(0, 198, 255, 0.6);
+  transform: scale(1.02);
+}
+
+/* =========================
+   BUTTON
+========================= */
+.register-card button {
+  width: 100%;
+  padding: 13px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: linear-gradient(135deg, #ff5a5f, #ff7e7e);
+  color: white;
+
+  font-size: 16px;
+  font-weight: bold;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* HOVER */
+.register-card button:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+/* ACTIVE */
+.register-card button:active {
+  transform: scale(0.98);
+}
+
+/* =========================
+   ANIMATION
+========================= */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 480px) {
+  .register-card {
+    max-width: 90%;
+    padding: 25px;
+  }
+
+  .register-card h2 {
+    font-size: 22px;
+  }
+}
