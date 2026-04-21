@@ -2,17 +2,20 @@
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /app
 
-# 🔥 Go inside inner folder
-COPY . ./RealEstateAPI
-WORKDIR /app/RealEstateAPI
+# Copy entire repo
+COPY . .
+
+# 🔥 Go into correct inner folder (VERY IMPORTANT)
+WORKDIR /app/RealEstateAPI/RealEstateAPI
 
 RUN dotnet restore
-RUN dotnet publish -c Release -o out
+RUN dotnet publish -c Release -o /app/out
 
 # Runtime stage
 FROM mcr.microsoft.com/dotnet/aspnet:7.0
 WORKDIR /app
-COPY --from=build /app/RealEstateAPI/out .
+
+COPY --from=build /app/out .
 
 EXPOSE 8080
 ENV ASPNETCORE_URLS=http://+:8080
