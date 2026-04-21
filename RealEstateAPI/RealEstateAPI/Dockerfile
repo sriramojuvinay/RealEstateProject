@@ -1,14 +1,11 @@
-# Build stage
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /app
 
 COPY . .
 
-# 🔥 DIRECTLY TARGET PROJECT FILE
-RUN dotnet restore RealEstateAPI/RealEstateAPI/RealEstateAPI.csproj
-RUN dotnet publish RealEstateAPI/RealEstateAPI/RealEstateAPI.csproj -c Release -o /app/out
+RUN dotnet restore RealEstateAPI/RealEstateAPI.csproj
+RUN dotnet publish RealEstateAPI/RealEstateAPI.csproj -c Release -o /app/out
 
-# Runtime stage
 FROM mcr.microsoft.com/dotnet/aspnet:7.0
 WORKDIR /app
 
