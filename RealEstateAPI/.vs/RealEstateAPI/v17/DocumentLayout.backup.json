@@ -78,7 +78,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 50,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
@@ -124,28 +124,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "CreatePropertyDto.cs",
-              "DocumentMoniker": "D:\\.NET Materials\\RealEstateProject\\RealEstateAPI\\RealEstateAPI\\DTOs\\CreatePropertyDto.cs",
-              "RelativeDocumentMoniker": "RealEstateAPI\\DTOs\\CreatePropertyDto.cs",
-              "ToolTip": "D:\\.NET Materials\\RealEstateProject\\RealEstateAPI\\RealEstateAPI\\DTOs\\CreatePropertyDto.cs*",
-              "RelativeToolTip": "RealEstateAPI\\DTOs\\CreatePropertyDto.cs*",
-              "ViewState": "AgIAAA0AAAAAAAAAAAA/wA4AAAA5AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-20T10:22:36.974Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "PropertyController.cs",
               "DocumentMoniker": "D:\\.NET Materials\\RealEstateProject\\RealEstateAPI\\RealEstateAPI\\Controllers\\PropertyController.cs",
               "RelativeDocumentMoniker": "RealEstateAPI\\Controllers\\PropertyController.cs",
-              "ToolTip": "D:\\.NET Materials\\RealEstateProject\\RealEstateAPI\\RealEstateAPI\\Controllers\\PropertyController.cs*",
-              "RelativeToolTip": "RealEstateAPI\\Controllers\\PropertyController.cs*",
-              "ViewState": "AgIAAH0AAAAAAAAAAADwv5UAAAANAAAAAAAAAA==",
+              "ToolTip": "D:\\.NET Materials\\RealEstateProject\\RealEstateAPI\\RealEstateAPI\\Controllers\\PropertyController.cs",
+              "RelativeToolTip": "RealEstateAPI\\Controllers\\PropertyController.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAwH0AAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-20T03:42:38.959Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CreatePropertyDto.cs",
+              "DocumentMoniker": "D:\\.NET Materials\\RealEstateProject\\RealEstateAPI\\RealEstateAPI\\DTOs\\CreatePropertyDto.cs",
+              "RelativeDocumentMoniker": "RealEstateAPI\\DTOs\\CreatePropertyDto.cs",
+              "ToolTip": "D:\\.NET Materials\\RealEstateProject\\RealEstateAPI\\RealEstateAPI\\DTOs\\CreatePropertyDto.cs",
+              "RelativeToolTip": "RealEstateAPI\\DTOs\\CreatePropertyDto.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAA/wA4AAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-20T10:22:36.974Z",
               "EditorCaption": ""
             },
             {
@@ -154,8 +154,8 @@
               "Title": "PropertyDto.cs",
               "DocumentMoniker": "D:\\.NET Materials\\RealEstateProject\\RealEstateAPI\\RealEstateAPI\\DTOs\\PropertyDto.cs",
               "RelativeDocumentMoniker": "RealEstateAPI\\DTOs\\PropertyDto.cs",
-              "ToolTip": "D:\\.NET Materials\\RealEstateProject\\RealEstateAPI\\RealEstateAPI\\DTOs\\PropertyDto.cs*",
-              "RelativeToolTip": "RealEstateAPI\\DTOs\\PropertyDto.cs*",
+              "ToolTip": "D:\\.NET Materials\\RealEstateProject\\RealEstateAPI\\RealEstateAPI\\DTOs\\PropertyDto.cs",
+              "RelativeToolTip": "RealEstateAPI\\DTOs\\PropertyDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-20T10:00:54.94Z",
