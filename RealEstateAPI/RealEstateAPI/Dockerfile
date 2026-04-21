@@ -3,9 +3,9 @@ WORKDIR /app
 
 COPY . .
 
-# ✅ CORRECT FULL PATH
-RUN dotnet restore ./RealEstateAPI/RealEstateAPI/RealEstateAPI.csproj
-RUN dotnet publish ./RealEstateAPI/RealEstateAPI/RealEstateAPI.csproj -c Release -o /app/out
+# ✅ CORRECT PATH
+RUN dotnet restore RealEstateAPI/RealEstateAPI.csproj
+RUN dotnet publish RealEstateAPI/RealEstateAPI.csproj -c Release -o /app/out
 
 FROM mcr.microsoft.com/dotnet/aspnet:7.0
 WORKDIR /app
