@@ -157,3 +157,4 @@ D:\.NET Materials\RealEstateProject\RealEstateAPI\RealEstateAPI\obj\Debug\net8.0
 D:\.NET Materials\RealEstateProject\RealEstateAPI\RealEstateAPI\obj\Debug\net8.0\RealEstateAPI.genruntimeconfig.cache
 D:\.NET Materials\RealEstateProject\RealEstateAPI\RealEstateAPI\obj\Debug\net8.0\ref\RealEstateAPI.dll
 D:\.NET Materials\RealEstateProject\RealEstateAPI\RealEstateAPI\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+D:\.NET Materials\RealEstateProject\RealEstateAPI\RealEstateAPI\obj\Debug\net8.0\RealEstateAPI.sourcelink.json
