@@ -1,10 +1,12 @@
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
-WORKDIR /app
 
-COPY . .
+# 🔥 Go directly into project folder
+WORKDIR /app/RealEstateAPI
 
-RUN dotnet restore RealEstateAPI.csproj
-RUN dotnet publish RealEstateAPI.csproj -c Release -o /app/out
+COPY RealEstateAPI/. .
+
+RUN dotnet restore
+RUN dotnet publish -c Release -o /app/out
 
 FROM mcr.microsoft.com/dotnet/aspnet:7.0
 WORKDIR /app
