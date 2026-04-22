@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using RealEstateAPI.Data;
@@ -13,20 +16,23 @@ using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Services
+// ✅ Services
 builder.Services.AddScoped<RentPaymentService>();
 
-// ✅ MYSQL CONNECTION (UPDATED)
+// ✅ DATABASE (SAFE CHECK)
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseMySql(
-        connectionString,
-        ServerVersion.AutoDetect(connectionString)
-    )
-);
+if (!string.IsNullOrEmpty(connectionString))
+{
+    builder.Services.AddDbContext<AppDbContext>(options =>
+        options.UseSqlServer(connectionString));
+}
+else
+{
+    Console.WriteLine("⚠️ WARNING: No DB Connection String Found!");
+}
 
-// Controllers
+// ✅ Controllers
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
@@ -34,30 +40,20 @@ builder.Services.AddControllers()
         options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
     });
 
+// ✅ SignalR
 builder.Services.AddSignalR();
+
 builder.Services.AddEndpointsApiExplorer();
 
-// Identity
-builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
-    .AddEntityFrameworkStores<AppDbContext>()
-    .AddDefaultTokenProviders();
-
-builder.Services.ConfigureApplicationCookie(options =>
+// ✅ Identity (ONLY if DB exists)
+if (!string.IsNullOrEmpty(connectionString))
 {
-    options.Events.OnRedirectToLogin = context =>
-    {
-        context.Response.StatusCode = 401;
-        return Task.CompletedTask;
-    };
+    builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+        .AddEntityFrameworkStores<AppDbContext>()
+        .AddDefaultTokenProviders();
+}
 
-    options.Events.OnRedirectToAccessDenied = context =>
-    {
-        context.Response.StatusCode = 403;
-        return Task.CompletedTask;
-    };
-});
-
-// JWT Authentication
+// ✅ JWT
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -67,37 +63,23 @@ builder.Services.AddAuthentication(options =>
 {
     options.TokenValidationParameters = new TokenValidationParameters
     {
-        ValidateIssuer = true,
-        ValidateAudience = true,
+        ValidateIssuer = false,
+        ValidateAudience = false,
         ValidateLifetime = true,
         ValidateIssuerSigningKey = true,
-
-        ValidIssuer = builder.Configuration["Jwt:Issuer"],
-        ValidAudience = builder.Configuration["Jwt:Audience"],
-
         IssuerSigningKey = new SymmetricSecurityKey(
-            Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])
+            Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"] ?? "default_secret_key_12345")
         )
-    };
-
-    options.Events = new JwtBearerEvents
-    {
-        OnChallenge = context =>
-        {
-            context.HandleResponse();
-            context.Response.StatusCode = 401;
-            return Task.CompletedTask;
-        }
     };
 });
 
-// Cloudinary
+// ✅ Cloudinary
 builder.Services.Configure<CloudinarySettings>(
     builder.Configuration.GetSection("CloudinarySettings"));
 
 builder.Services.AddScoped<CloudinaryService>();
 
-// Swagger
+// ✅ Swagger (ENABLE ALWAYS)
 builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new OpenApiInfo
@@ -105,66 +87,44 @@ builder.Services.AddSwaggerGen(options =>
         Title = "RealEstateAPI",
         Version = "v1"
     });
-
-    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-    {
-        Name = "Authorization",
-        Type = SecuritySchemeType.Http,
-        Scheme = "bearer",
-        BearerFormat = "JWT",
-        In = ParameterLocation.Header,
-        Description = "Enter: Bearer {token}"
-    });
-
-    options.AddSecurityRequirement(new OpenApiSecurityRequirement
-    {
-        {
-            new OpenApiSecurityScheme
-            {
-                Reference = new OpenApiReference
-                {
-                    Type = ReferenceType.SecurityScheme,
-                    Id = "Bearer"
-                }
-            },
-            new string[] {}
-        }
-    });
 });
 
-// CORS
+// ✅ CORS (ALLOW ALL FOR NOW)
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowFrontend", policy =>
+    options.AddPolicy("AllowAll", policy =>
     {
-        policy.WithOrigins("http://localhost:3000")
+        policy.AllowAnyOrigin()
               .AllowAnyHeader()
-              .AllowAnyMethod()
-              .AllowCredentials();
+              .AllowAnyMethod();
     });
 });
 
 var app = builder.Build();
 
-// ✅ CREATE ROLES (UNCHANGED)
-using (var scope = app.Services.CreateScope())
+// ✅ Seed roles ONLY if DB exists
+if (!string.IsNullOrEmpty(connectionString))
 {
-    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-
-    string[] roles = { "Admin", "User" };
-
-    foreach (var role in roles)
+    using (var scope = app.Services.CreateScope())
     {
-        if (!await roleManager.RoleExistsAsync(role))
+        var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+        string[] roles = { "Admin", "User" };
+
+        foreach (var role in roles)
         {
-            await roleManager.CreateAsync(new IdentityRole(role));
+            if (!await roleManager.RoleExistsAsync(role))
+            {
+                await roleManager.CreateAsync(new IdentityRole(role));
+            }
         }
     }
 }
 
-app.UseCors("AllowFrontend");
+// ✅ Middleware
+app.UseCors("AllowAll");
 
-// Swagger (Enable in production too for testing)
+// ✅ Swagger ALWAYS ON
 app.UseSwagger();
 app.UseSwaggerUI();
 
@@ -173,8 +133,11 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
+// ✅ SignalR
 app.MapHub<ChatHub>("/chatHub");
 
+// ✅ Controllers
 app.MapControllers();
 
-app.Run();
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+app.Run($"http://0.0.0.0:{port}");
