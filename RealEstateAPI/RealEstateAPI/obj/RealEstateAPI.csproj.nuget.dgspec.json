@@ -67,13 +67,13 @@
               "target": "Package",
               "version": "[1.2.9, )"
             },
-            "Microsoft.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[8.0.25, )"
-            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.25, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
               "target": "Package",
               "version": "[8.0.25, )"
             },
@@ -90,6 +90,10 @@
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.4, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[8.0.2, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
