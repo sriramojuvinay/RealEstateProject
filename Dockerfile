@@ -4,6 +4,8 @@ WORKDIR /app
 
 COPY . .
 
+WORKDIR /app/RealEstateAPI/RealEstateAPI 
+
 RUN dotnet restore RealEstateAPI.csproj
 RUN dotnet publish RealEstateAPI.csproj -c Release -o /app/out
 
