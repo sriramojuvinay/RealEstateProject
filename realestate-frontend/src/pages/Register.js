@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import api from "../services/api";
 import "./Register.css";
 
 const Register = () => {
@@ -13,7 +13,7 @@ const Register = () => {
 
     try {
   
-      await axios.post("http://localhost:5000/api/auth/register", {
+      await api.post("/auth/register", {
         fullName,
         email,
         password,
@@ -21,10 +21,11 @@ const Register = () => {
       });
 
      
-      const loginRes = await axios.post(
-        "http://localhost:5000/api/auth/login",
-        { email, password }
-      );
+      const loginRes = await api.post("/auth/login", {
+        email,
+        password
+      }); 
+      
 
       console.log("LOGIN RESPONSE:", loginRes.data);
 

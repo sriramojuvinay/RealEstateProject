@@ -1,13 +1,11 @@
 import axios from "axios";
 
-
-const BASE_URL = "http://localhost:5000/api";
-
+// ✅ BASE API
 const api = axios.create({
-  baseURL: BASE_URL,
+  baseURL: "http://localhost:8080/api",
 });
 
-
+// ✅ REQUEST INTERCEPTOR (Attach Token)
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("token");
@@ -21,7 +19,7 @@ api.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-
+// ✅ RESPONSE INTERCEPTOR
 api.interceptors.response.use(
   (response) => response,
   (error) => {
@@ -29,15 +27,29 @@ api.interceptors.response.use(
 
     if (error.response?.status === 401) {
       localStorage.clear();
-      window.location.href = "/login"; // auto logout
+      window.location.href = "/login";
     }
 
     return Promise.reject(error);
   }
 );
 
+//
+// ================= AUTH =================
+//
+export const registerUser = async (data) => {
+  const res = await api.post("/auth/register", data);
+  return res.data;
+};
 
+export const loginUser = async (data) => {
+  const res = await api.post("/auth/login", data);
+  return res.data;
+};
 
+//
+// ================= PROPERTIES =================
+//
 export const getProperties = async () => {
   const res = await api.get("/property");
   return res.data;
@@ -58,20 +70,20 @@ export const deleteProperty = async (id) => {
   return res.data;
 };
 
-export const registerUser = async (data) => {
-  const res = await api.post("/auth/register", data);
-  return res.data;
-};
-
-export const loginUser = async (data) => {
-  const res = await api.post("/auth/login", data);
-  return res.data;
-};
-
-
+//
+// ================= BOOKINGS =================
+// ⚠️ IMPORTANT: Use /booking (NOT /bookings)
+//
 export const bookProperty = async (data) => {
-  const res = await api.post("/bookings", data);
-  return res.data;
+  try {
+    const res = await api.post("/bookings", data);
+    return res.data;
+  } catch (err) {
+    if (err.response?.status === 400) {
+      alert(err.response.data || "Already booked ❗");
+    }
+    throw err;
+  }
 };
 
 export const getUserBookings = async (userId) => {
@@ -101,7 +113,6 @@ export const rejectBooking = async (id) => {
   return res.data;
 };
 
-
 export const getAdminBookings = async () => {
   const res = await api.get("/bookings/admin");
   return res.data;
@@ -112,7 +123,9 @@ export const getRentals = async () => {
   return res.data;
 };
 
-
+//
+// ================= CHAT =================
+//
 export const startChat = async (data) => {
   const res = await api.post("/chat/start", data);
   return res.data;
@@ -123,7 +136,9 @@ export const getMessages = async (conversationId) => {
   return res.data;
 };
 
-
+//
+// ================= FAVORITES =================
+//
 export const addFavorite = async (propertyId) => {
   const userId = localStorage.getItem("userId");
 
@@ -158,7 +173,9 @@ export const checkFavorite = async (userId, propertyId) => {
   return res.data;
 };
 
-
+//
+// ================= RENT PAYMENTS =================
+//
 export const getPaymentHistory = async (agreementId) => {
   const res = await api.get(`/rentpayment/history/${agreementId}`);
   return res.data;
@@ -169,5 +186,7 @@ export const endRental = async (id) => {
   return res.data;
 };
 
-
+//
+// ================= EXPORT =================
+//
 export default api;

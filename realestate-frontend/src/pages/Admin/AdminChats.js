@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./AdminChats.css";
+import api from "../../services/api"; // ✅ FIXED
 
 const AdminChats = () => {
   const [conversations, setConversations] = useState([]);
@@ -11,15 +11,7 @@ const AdminChats = () => {
   useEffect(() => {
     const fetchChats = async () => {
       try {
-        const res = await axios.get(
-          "http://localhost:5000/api/chat/admin",
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          }
-        );
-
+        const res = await api.get("/chat/admin"); // ✅ FIXED
         setConversations(res.data);
       } catch (err) {
         console.error("Error fetching chats:", err);
@@ -30,8 +22,6 @@ const AdminChats = () => {
 
     fetchChats();
   }, []);
-
-  
 
   if (loading) return <h3 style={{ padding: "20px" }}>Loading chats...</h3>;
 

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./ManageProperties.css";
-
-const BASE_URL = "http://localhost:5000/api";
+import api from "../../services/api"; // ✅ IMPORTANT
 
 const ManageProperties = () => {
   const [properties, setProperties] = useState([]);
@@ -11,20 +10,26 @@ const ManageProperties = () => {
 
   const [imageIndexes, setImageIndexes] = useState({});
 
- 
   const [location, setLocation] = useState("");
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
   const [type, setType] = useState("");
 
- 
+  // ✅ FETCH PROPERTIES
   useEffect(() => {
-    fetch(`${BASE_URL}/Property`)
-      .then((res) => res.json())
-      .then((data) => setProperties(data));
+    const loadProperties = async () => {
+      try {
+        const res = await api.get("/property");
+        setProperties(res.data);
+      } catch (err) {
+        console.error("Fetch error:", err);
+      }
+    };
+
+    loadProperties();
   }, []);
 
-
+  // IMAGE NAVIGATION
   const nextImage = (id, images) => {
     setImageIndexes((prev) => ({
       ...prev,
@@ -42,87 +47,57 @@ const ManageProperties = () => {
     }));
   };
 
- 
+  // ✅ DELETE PROPERTY
   const confirmDelete = async (id) => {
-    const token = localStorage.getItem("token");
     setLoadingId(id);
 
     try {
-      const res = await fetch(`${BASE_URL}/Property/${id}`, {
-        method: "DELETE",
-        headers: { Authorization: `Bearer ${token}` },
-      });
-
-      if (res.ok) {
-        setProperties((prev) => prev.filter((p) => p.id !== id));
-      } else {
-        alert("Delete failed ❌");
-      }
-    } catch {
-      alert("Server error ❌");
+      await api.delete(`/property/${id}`);
+      setProperties((prev) => prev.filter((p) => p.id !== id));
+    } catch (err) {
+      console.error(err);
+      alert("Delete failed ❌");
     }
 
     setLoadingId(null);
     setDeleteId(null);
   };
 
-
+  // ✅ UPDATE PROPERTY
   const handleUpdate = async () => {
-    const token = localStorage.getItem("token");
-
     try {
-      const res = await fetch(
-        `${BASE_URL}/Property/${editingProperty.id}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({
-            ...editingProperty,
-            price: Number(editingProperty.price),
-          }),
-        }
+      await api.put(`/property/${editingProperty.id}`, {
+        ...editingProperty,
+        price: Number(editingProperty.price),
+      });
+
+      setProperties((prev) =>
+        prev.map((p) =>
+          p.id === editingProperty.id ? editingProperty : p
+        )
       );
 
-      if (res.ok) {
-        setProperties((prev) =>
-          prev.map((p) =>
-            p.id === editingProperty.id ? editingProperty : p
-          )
-        );
-        setEditingProperty(null);
-      } else {
-        alert("Update failed ❌");
-      }
-    } catch {
-      alert("Server error ❌");
+      setEditingProperty(null);
+    } catch (err) {
+      console.error(err);
+      alert("Update failed ❌");
     }
   };
 
-
+  // ✅ SEARCH
   const handleSearch = async () => {
-    const params = new URLSearchParams();
+    try {
+      const params = new URLSearchParams();
 
-    if (location) params.append("location", location);
-    if (minPrice) params.append("minPrice", minPrice);
-    if (maxPrice) params.append("maxPrice", maxPrice);
-    if (type) params.append("type", type);
+      if (location) params.append("location", location);
+      if (minPrice) params.append("minPrice", minPrice);
+      if (maxPrice) params.append("maxPrice", maxPrice);
+      if (type) params.append("type", type);
 
-    const token = localStorage.getItem("token");
-
-    const res = await fetch(
-      `${BASE_URL}/Property/search?${params}`,
-      {
-        headers: { Authorization: `Bearer ${token}` },
-      }
-    );
-
-    if (res.ok) {
-      const data = await res.json();
-      setProperties(data);
-    } else {
+      const res = await api.get(`/property/search?${params}`);
+      setProperties(res.data);
+    } catch (err) {
+      console.error(err);
       alert("Search failed ❌");
     }
   };
@@ -131,7 +106,7 @@ const ManageProperties = () => {
     <div className="manage-container">
       <h2 className="manage-title">Manage Properties 🏠</h2>
 
-      {/* 🔍 SEARCH BAR */}
+      {/* SEARCH */}
       <div className="search-bar">
         <input
           placeholder="Location"
@@ -163,7 +138,7 @@ const ManageProperties = () => {
         <button onClick={handleSearch}>Search 🔍</button>
       </div>
 
-     
+      {/* PROPERTY GRID */}
       <div className="manage-grid">
         {properties.map((p) => {
           let images = [];
@@ -183,8 +158,6 @@ const ManageProperties = () => {
 
           return (
             <div className="manage-card" key={p.id}>
-              
-              {/* 🔥 IMAGE */}
               <div className="image-wrapper">
                 <img src={currentImage} alt={p.title} />
 
@@ -210,7 +183,6 @@ const ManageProperties = () => {
                 </span>
               </div>
 
-              
               <div className="card-content">
                 <h3>{p.title}</h3>
                 <p>📍 {p.location}</p>
@@ -227,7 +199,6 @@ const ManageProperties = () => {
                 </p>
               </div>
 
-              
               <div className="manage-actions">
                 <button
                   className="delete-btn"
@@ -248,20 +219,18 @@ const ManageProperties = () => {
         })}
       </div>
 
-      
+      {/* DELETE MODAL */}
       {deleteId && (
         <div className="modal">
           <div className="modal-content">
             <p>Delete this property?</p>
-            <button onClick={() => confirmDelete(deleteId)}>
-              Yes
-            </button>
+            <button onClick={() => confirmDelete(deleteId)}>Yes</button>
             <button onClick={() => setDeleteId(null)}>Cancel</button>
           </div>
         </div>
       )}
 
-      
+      {/* EDIT MODAL */}
       {editingProperty && (
         <div className="modal">
           <div className="modal-content">

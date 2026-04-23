@@ -1,25 +1,16 @@
 import React, { useEffect, useState, useCallback } from "react";
-import axios from "axios";
 import { toast } from "react-toastify";
 import "./AdminBookings.css";
-
-const BASE_URL = "http://localhost:5000/api/bookings";
+import api from "../services/api";
 
 const AdminBookings = () => {
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const token = localStorage.getItem("token");
-
-  
+  // ✅ FETCH BOOKINGS
   const fetchBookings = useCallback(async () => {
     try {
-      const res = await axios.get(`${BASE_URL}/all`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
+      const res = await api.get("/bookings/all"); // ✅ FIXED
       setBookings(res.data);
     } catch (err) {
       console.error(err);
@@ -27,25 +18,17 @@ const AdminBookings = () => {
     } finally {
       setLoading(false);
     }
-  }, [token]);
+  }, []);
 
   useEffect(() => {
     fetchBookings();
   }, [fetchBookings]);
 
+  // ✅ APPROVE
   const approveBooking = async (id) => {
     try {
-      await axios.put(
-        `${BASE_URL}/approve/${id}`,
-        {},
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      await api.put(`/bookings/approve/${id}`); // ✅ FIXED
 
-      
       setBookings((prev) =>
         prev.map((b) =>
           b.id === id ? { ...b, status: "Approved" } : b
@@ -59,17 +42,10 @@ const AdminBookings = () => {
     }
   };
 
+  // ✅ REJECT
   const rejectBooking = async (id) => {
     try {
-      await axios.put(
-        `${BASE_URL}/reject/${id}`,
-        {},
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      await api.put(`/bookings/reject/${id}`); // ✅ FIXED
 
       setBookings((prev) =>
         prev.map((b) =>
@@ -113,7 +89,6 @@ const AdminBookings = () => {
                   : "N/A"}
               </p>
 
-              
               <p>
                 <b>Status:</b>{" "}
                 <span className={`status ${b.status?.toLowerCase() || "pending"}`}>
@@ -121,7 +96,6 @@ const AdminBookings = () => {
                 </span>
               </p>
 
-              
               {b.status === "Pending" ? (
                 <div className="actions">
                   <button

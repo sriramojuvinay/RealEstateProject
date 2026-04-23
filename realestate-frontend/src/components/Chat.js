@@ -45,7 +45,7 @@ const Chat = () => {
   // ✅ CREATE CONNECTION
   useEffect(() => {
     const newConnection = new signalR.HubConnectionBuilder()
-      .withUrl("http://localhost:5000/chatHub", {
+      .withUrl("http://localhost:8080/chatHub", {
         accessTokenFactory: () => localStorage.getItem("token"),
       })
       .withAutomaticReconnect()

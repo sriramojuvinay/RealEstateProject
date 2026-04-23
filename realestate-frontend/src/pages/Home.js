@@ -2,8 +2,9 @@ import React, { useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import PropertyCard from "../components/PropertyCard";
 import "./Home.css";
+import api from "../services/api"; // ✅ ONLY API
 
-const BASE_URL = "http://localhost:5000/api";
+
 
 const heroImages = [
   "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
@@ -43,8 +44,8 @@ const Home = () => {
 
   // 🔥 FETCH PROPERTIES
   useEffect(() => {
-    fetch(`${BASE_URL}/Property`)
-      .then((res) => res.json())
+    api.get("/property")
+      .then((res) => res.data)
       .then((data) => {
         setAllProperties(data);
         setFeatured(data.slice(0, 3));

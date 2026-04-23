@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "./EditProperty.css";
+import api from "../../services/api"; // ✅ ONLY API
 
-const API_BASE = "http://localhost:5000";
+
 
 const EditProperty = () => {
   const { id } = useParams();
@@ -26,7 +27,7 @@ const EditProperty = () => {
   useEffect(() => {
     const fetchProperty = async () => {
       try {
-        const res = await fetch(`${API_BASE}/api/property/${id}`);
+        const res = await api.get(`/property/${id}`); // ✅ FIXED
         const data = await res.json();
 
         let images = data.imageUrls;
@@ -98,13 +99,7 @@ const EditProperty = () => {
         formData.append("Files", img);
       });
 
-      const res = await fetch(`${API_BASE}/api/property/${id}`, {
-        method: "PUT",
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-        body: formData,
-      });
+      const res = await api.put(`/property/${id}`, formData);
 
       if (res.ok) {
         alert("Updated successfully ✅");

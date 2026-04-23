@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import "./MyProperties.css";
 import { useNavigate } from "react-router-dom";
 import { FaEdit, FaTrash } from "react-icons/fa";
-
-const API_BASE = "http://localhost:5000";
+import api from "../../services/api"; // ✅ IMPORTANT FIX
 
 const MyProperties = () => {
   const [properties, setProperties] = useState([]);
@@ -14,21 +13,10 @@ const MyProperties = () => {
   useEffect(() => {
     const fetchMyProperties = async () => {
       try {
-        const token = localStorage.getItem("token");
-
-        const res = await fetch(
-          `${API_BASE}/api/Property/my-properties`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-
-        const data = await res.json();
-        setProperties(data);
+        const res = await api.get("/property/my-properties");
+        setProperties(res.data);
       } catch (err) {
-        console.error(err);
+        console.error("Error fetching properties:", err);
       } finally {
         setLoading(false);
       }
@@ -40,24 +28,19 @@ const MyProperties = () => {
   const deleteProperty = async (id) => {
     if (!window.confirm("Delete this property?")) return;
 
-    const token = localStorage.getItem("token");
-
-    await fetch(`${API_BASE}/api/Property/${id}`, {
-      method: "DELETE",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-
-    setProperties((prev) => prev.filter((p) => p.id !== id));
+    try {
+      await api.delete(`/property/${id}`);
+      setProperties((prev) => prev.filter((p) => p.id !== id));
+    } catch (err) {
+      console.error("Delete failed:", err);
+      alert("Delete failed ❌");
+    }
   };
 
-  
   if (loading) return <h3 className="loading">Loading...</h3>;
 
   return (
     <div className="my-properties">
-
       <div className="header">
         <h2>🏠 My Properties</h2>
         <span>{properties.length} Listings</span>
@@ -66,8 +49,7 @@ const MyProperties = () => {
       <div className="grid">
         {properties.map((p) => (
           <div key={p.id} className="card">
-
-            {/* IMAGE */}
+            
             <div className="image-wrapper">
               <img
                 src={
@@ -78,19 +60,17 @@ const MyProperties = () => {
                 alt=""
               />
 
-              {/* ✅ SELL / RENT */}
-            <span
-              className={`badge ${
-                p.listingType?.toLowerCase() === "rent"
-                  ? "rent"
-                  : "sell"
-              }`}
-            >
-              {(p.listingType || "Sell").toUpperCase()}
-            </span>
+              <span
+                className={`badge ${
+                  p.listingType?.toLowerCase() === "rent"
+                    ? "rent"
+                    : "sell"
+                }`}
+              >
+                {(p.listingType || "Sell").toUpperCase()}
+              </span>
             </div>
 
-            {/* DETAILS */}
             <div className="card-body">
               <h3>{p.title}</h3>
               <p className="location">📍 {p.location}</p>
@@ -98,7 +78,7 @@ const MyProperties = () => {
 
               <div className="actions">
                 <button onClick={() => navigate(`/admin/edit/${p.id}`)}>
-                   <FaEdit />  Edit
+                  <FaEdit /> Edit
                 </button>
 
                 <button onClick={() => deleteProperty(p.id)}>

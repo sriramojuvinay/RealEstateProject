@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "D:\\.NET Materials\\RealEstateProject\\RealEstateAPI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4087DA5F-2DA0-4E97-995C-3E8962AFD507}|RealEstateAPI\\RealEstateAPI.csproj|d:\\.net materials\\realestateproject\\realestateapi\\realestateapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{4087DA5F-2DA0-4E97-995C-3E8962AFD507}|RealEstateAPI\\RealEstateAPI.csproj|solutionrelative:realestateapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{4087DA5F-2DA0-4E97-995C-3E8962AFD507}|RealEstateAPI\\RealEstateAPI.csproj|d:\\.net materials\\realestateproject\\realestateapi\\realestateapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4087DA5F-2DA0-4E97-995C-3E8962AFD507}|RealEstateAPI\\RealEstateAPI.csproj|solutionrelative:realestateapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4087DA5F-2DA0-4E97-995C-3E8962AFD507}|RealEstateAPI\\RealEstateAPI.csproj|d:\\.net materials\\realestateproject\\realestateapi\\realestateapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{4087DA5F-2DA0-4E97-995C-3E8962AFD507}|RealEstateAPI\\RealEstateAPI.csproj|solutionrelative:realestateapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4087DA5F-2DA0-4E97-995C-3E8962AFD507}|RealEstateAPI\\RealEstateAPI.csproj|d:\\.net materials\\realestateproject\\realestateapi\\realestateapi\\services\\rentpaymentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -87,8 +87,7 @@
               "ViewState": "AgIAAGUAAAAAAAAAAAAgwGIAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-23T06:22:15.453Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -101,8 +100,7 @@
               "ViewState": "AgIAAE0AAAAAAAAAAAAiwGkAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-23T06:30:48.154Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -115,33 +113,32 @@
               "ViewState": "AgIAABsAAAAAAAAAAAAYwDcAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-10T09:28:30.248Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\.NET Materials\\RealEstateProject\\RealEstateAPI\\RealEstateAPI\\appsettings.json",
-              "RelativeDocumentMoniker": "RealEstateAPI\\appsettings.json",
-              "ToolTip": "D:\\.NET Materials\\RealEstateProject\\RealEstateAPI\\RealEstateAPI\\appsettings.json",
-              "RelativeToolTip": "RealEstateAPI\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAABuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-04-22T04:17:52.744Z",
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\.NET Materials\\RealEstateProject\\RealEstateAPI\\RealEstateAPI\\Program.cs",
+              "RelativeDocumentMoniker": "RealEstateAPI\\Program.cs",
+              "ToolTip": "D:\\.NET Materials\\RealEstateProject\\RealEstateAPI\\RealEstateAPI\\Program.cs*",
+              "RelativeToolTip": "RealEstateAPI\\Program.cs*",
+              "ViewState": "AgIAAH0AAAAAAAAAAAAAAH8AAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-23T03:53:34.161Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\.NET Materials\\RealEstateProject\\RealEstateAPI\\RealEstateAPI\\Program.cs",
-              "RelativeDocumentMoniker": "RealEstateAPI\\Program.cs",
-              "ToolTip": "D:\\.NET Materials\\RealEstateProject\\RealEstateAPI\\RealEstateAPI\\Program.cs",
-              "RelativeToolTip": "RealEstateAPI\\Program.cs",
-              "ViewState": "AgIAAHsAAAAAAAAAAAAIwIAAAAATAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-20T09:27:04.377Z",
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\.NET Materials\\RealEstateProject\\RealEstateAPI\\RealEstateAPI\\appsettings.json",
+              "RelativeDocumentMoniker": "RealEstateAPI\\appsettings.json",
+              "ToolTip": "D:\\.NET Materials\\RealEstateProject\\RealEstateAPI\\RealEstateAPI\\appsettings.json",
+              "RelativeToolTip": "RealEstateAPI\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-04-22T04:17:52.744Z",
               "EditorCaption": ""
             },
             {
@@ -154,8 +151,7 @@
               "RelativeToolTip": "RealEstateAPI\\Controllers\\PropertyController.cs",
               "ViewState": "AgIAAA4AAAAAAAAAAAAAwH0AAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-20T03:42:38.959Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-20T03:42:38.959Z"
             },
             {
               "$type": "Document",
@@ -167,8 +163,7 @@
               "RelativeToolTip": "RealEstateAPI\\DTOs\\CreatePropertyDto.cs",
               "ViewState": "AgIAAA8AAAAAAAAAAAAowA4AAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-20T10:22:36.974Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-20T10:22:36.974Z"
             },
             {
               "$type": "Document",
@@ -180,8 +175,7 @@
               "RelativeToolTip": "RealEstateAPI\\DTOs\\PropertyDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-20T10:00:54.94Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-20T10:00:54.94Z"
             },
             {
               "$type": "Document",
@@ -193,8 +187,7 @@
               "RelativeToolTip": "RealEstateAPI\\Controllers\\RentalController.cs",
               "ViewState": "AgIAAIsAAAAAAAAAAAAIwPgAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-20T03:44:42.632Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-20T03:44:42.632Z"
             },
             {
               "$type": "Document",
@@ -206,8 +199,7 @@
               "RelativeToolTip": "RealEstateAPI\\Controllers\\RentPaymentController.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAxwCsAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-20T09:35:00.459Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-20T09:35:00.459Z"
             },
             {
               "$type": "Document",
@@ -219,8 +211,7 @@
               "RelativeToolTip": "RealEstateAPI\\Services\\RentPaymentService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAEoAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-20T09:17:16.346Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-20T09:17:16.346Z"
             },
             {
               "$type": "Document",
@@ -232,8 +223,7 @@
               "RelativeToolTip": "RealEstateAPI\\DTOs\\RegisterDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-20T09:27:09.178Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-20T09:27:09.178Z"
             },
             {
               "$type": "Document",
@@ -245,8 +235,7 @@
               "RelativeToolTip": "RealEstateAPI\\DTOs\\RentRequest.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-20T09:27:07.121Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-20T09:27:07.121Z"
             },
             {
               "$type": "Document",
@@ -258,8 +247,7 @@
               "RelativeToolTip": "RealEstateAPI\\Services\\CloudinaryService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-20T09:26:51.927Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-20T09:26:51.927Z"
             },
             {
               "$type": "Document",
@@ -271,8 +259,7 @@
               "RelativeToolTip": "RealEstateAPI\\Models\\User.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T06:20:40.696Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-23T06:20:40.696Z"
             },
             {
               "$type": "Document",
@@ -284,18 +271,7 @@
               "RelativeToolTip": "RealEstateAPI\\DTOs\\LoginDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-02T09:36:04.763Z",
-              "EditorCaption": ""
-            }
-          ]
-        },
-        {
-          "DockedWidth": 1370,
-          "SelectedChildIndex": -1,
-          "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+              "WhenOpened": "2026-04-02T09:36:04.763Z"
             }
           ]
         }

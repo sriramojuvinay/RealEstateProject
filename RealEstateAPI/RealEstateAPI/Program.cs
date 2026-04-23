@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using RealEstateAPI.Data;
@@ -16,23 +13,32 @@ using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// ✅ Services
-builder.Services.AddScoped<RentPaymentService>();
-
-// ✅ DATABASE (SAFE CHECK)
+// 🔹 Read connection string once
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
+// =======================
+// ✅ SERVICES
+// =======================
+
+// 🔹 Database (MySQL)
 if (!string.IsNullOrEmpty(connectionString))
 {
     builder.Services.AddDbContext<AppDbContext>(options =>
-        options.UseSqlServer(connectionString));
+        options.UseMySql(
+            connectionString,
+            ServerVersion.AutoDetect(connectionString)
+        ));
 }
 else
 {
-    Console.WriteLine("⚠️ WARNING: No DB Connection String Found!");
+    Console.WriteLine("⚠️ No DB connection string found");
 }
 
-// ✅ Controllers
+// 🔹 Custom Services
+builder.Services.AddScoped<RentPaymentService>();
+builder.Services.AddScoped<CloudinaryService>();
+
+// 🔹 Controllers
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
@@ -40,12 +46,10 @@ builder.Services.AddControllers()
         options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
     });
 
-// ✅ SignalR
+// 🔹 SignalR
 builder.Services.AddSignalR();
 
-builder.Services.AddEndpointsApiExplorer();
-
-// ✅ Identity (ONLY if DB exists)
+// 🔹 Identity
 if (!string.IsNullOrEmpty(connectionString))
 {
     builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
@@ -53,7 +57,7 @@ if (!string.IsNullOrEmpty(connectionString))
         .AddDefaultTokenProviders();
 }
 
-// ✅ JWT
+// 🔹 JWT
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -61,70 +65,52 @@ builder.Services.AddAuthentication(options =>
 })
 .AddJwtBearer(options =>
 {
+    var key = builder.Configuration["Jwt:Key"] ?? "default_secret_key_12345";
+
     options.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuer = false,
         ValidateAudience = false,
         ValidateLifetime = true,
         ValidateIssuerSigningKey = true,
-        IssuerSigningKey = new SymmetricSecurityKey(
-            Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"] ?? "default_secret_key_12345")
-        )
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key))
     };
 });
 
-// ✅ Cloudinary
+// 🔹 Swagger
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+// 🔹 CORS (IMPORTANT for React + Railway)
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend", policy =>
+    {
+        policy.WithOrigins("http://localhost:3000") // ✅ your React app
+              .AllowAnyHeader()
+              .AllowAnyMethod()
+              .AllowCredentials(); // ✅ VERY IMPORTANT for SignalR
+    });
+});
+
+// 🔹 Cloudinary config
 builder.Services.Configure<CloudinarySettings>(
     builder.Configuration.GetSection("CloudinarySettings"));
 
-builder.Services.AddScoped<CloudinaryService>();
 
-// ✅ Swagger (ENABLE ALWAYS)
-builder.Services.AddSwaggerGen(options =>
-{
-    options.SwaggerDoc("v1", new OpenApiInfo
-    {
-        Title = "RealEstateAPI",
-        Version = "v1"
-    });
-});
-
-// ✅ CORS (ALLOW ALL FOR NOW)
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowAll", policy =>
-    {
-        policy.AllowAnyOrigin()
-              .AllowAnyHeader()
-              .AllowAnyMethod();
-    });
-});
+// =======================
+// ✅ BUILD APP
+// =======================
 
 var app = builder.Build();
 
-// ✅ Seed roles ONLY if DB exists
-if (!string.IsNullOrEmpty(connectionString))
-{
-    using (var scope = app.Services.CreateScope())
-    {
-        var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
-        string[] roles = { "Admin", "User" };
+// =======================
+// ✅ MIDDLEWARE
+// =======================
 
-        foreach (var role in roles)
-        {
-            if (!await roleManager.RoleExistsAsync(role))
-            {
-                await roleManager.CreateAsync(new IdentityRole(role));
-            }
-        }
-    }
-}
+app.UseCors("AllowFrontend");
 
-// ✅ Middleware
-app.UseCors("AllowAll");
-
-// ✅ Swagger ALWAYS ON
 app.UseSwagger();
 app.UseSwaggerUI();
 
@@ -133,11 +119,39 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
-// ✅ SignalR
-app.MapHub<ChatHub>("/chatHub");
 
-// ✅ Controllers
+// =======================
+// ✅ ROUTES
+// =======================
+
 app.MapControllers();
+app.MapHub<ChatHub>("/chatHub").RequireCors("AllowFrontend");
+
+
+// =======================
+// ✅ OPTIONAL ROLE SEED
+// =======================
+
+if (!string.IsNullOrEmpty(connectionString))
+{
+    using var scope = app.Services.CreateScope();
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+    string[] roles = { "Admin", "User" };
+
+    foreach (var role in roles)
+    {
+        if (!await roleManager.RoleExistsAsync(role))
+        {
+            await roleManager.CreateAsync(new IdentityRole(role));
+        }
+    }
+}
+
+
+// =======================
+// ✅ PORT FIX (RAILWAY)
+// =======================
 
 var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
 app.Run($"http://0.0.0.0:{port}");

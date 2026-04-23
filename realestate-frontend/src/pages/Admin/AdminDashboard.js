@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import api from "../../services/api";
+     import React, { useEffect, useState } from "react";
+import api from "../../services/api"; 
 import "./AdminDashboard.css";
 
 const AdminDashboard = () => {
@@ -13,25 +12,13 @@ const AdminDashboard = () => {
   const [loading, setLoading] = useState(true);
   const [earnings, setEarnings] = useState(null);
 
-  const token = localStorage.getItem("token");
-
   useEffect(() => {
     const loadStats = async () => {
       try {
         const [propertiesRes, bookingsRes, usersRes] = await Promise.all([
-          axios.get("http://localhost:5000/api/property"),
-
-          axios.get("http://localhost:5000/api/bookings/all", {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }),
-
-          axios.get("http://localhost:5000/api/auth/users", {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }),
+          api.get("/property"),          
+          api.get("/bookings/all"),      
+          api.get("/auth/users"),        
         ]);
 
         setStats({
@@ -43,25 +30,25 @@ const AdminDashboard = () => {
       } catch (err) {
         console.error("Stats error:", err);
       } finally {
-        setLoading(false); 
+        setLoading(false);
       }
     };
 
     loadStats();
-  }, [token]);
+  }, []);
 
   useEffect(() => {
-  const fetchEarnings = async () => {
-    try {
-      const res = await api.get("/dashboard/earnings"); 
-      setEarnings(res.data);
-    } catch (err) {
-      console.error("API ERROR:", err);
-    }
-  };
+    const fetchEarnings = async () => {
+      try {
+        const res = await api.get("/dashboard/earnings");
+        setEarnings(res.data);
+      } catch (err) {
+        console.error("Earnings error:", err);
+      }
+    };
 
-  fetchEarnings();
-}, []);
+    fetchEarnings();
+  }, []);
 
   if (loading) return <h2>Loading stats...</h2>;
 
@@ -73,22 +60,19 @@ const AdminDashboard = () => {
         <p>🏠 Properties: {stats.properties}</p>
         <p>📅 Bookings: {stats.bookings}</p>
         <p>👤 Users: {stats.users}</p>
-
-
       </div>
+
       <div className="earnings-dashboard">
+        <div className="card">
+          <h3>Total Earnings</h3>
+          <h2>₹{earnings?.totalEarnings || 0}</h2>
+        </div>
 
-      <div className="card">
-        <h3>Total Earnings</h3>
-        <h2>₹{earnings?.totalEarnings || 0}</h2>
+        <div className="card">
+          <h3>Active Rentals</h3>
+          <h2>{earnings?.activeRentals || 0}</h2>
+        </div>
       </div>
-
-      <div className="card">
-        <h3>Active Rentals</h3>
-        <h2>{earnings?.activeRentals || 0}</h2>
-      </div>
-
-    </div>
     </div>
   );
 };

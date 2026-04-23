@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import api from "../../services/api"; 
 import "./AddProperty.css";
 
 const AddProperty = () => {
@@ -8,53 +9,47 @@ const AddProperty = () => {
     price: "",
     type: "",
     listingType: "",
-    imageUrls: [], 
     description: "",
   });
 
+  const [files, setFiles] = useState([]);
   const [uploading, setUploading] = useState(false);
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  
-const [files, setFiles] = useState([]);
-  
- const handleSubmit = async (e) => {
-  e.preventDefault();
+    if (!files.length) {
+      alert("Please upload images ❗");
+      return;
+    }
 
-  const token = localStorage.getItem("token");
+    setUploading(true);
 
-  if (!files.length) {
-    alert("Please upload images ❗");
-    return;
-  }
+    const formData = new FormData();
 
-  setUploading(true); // 🔥 START LOADING
+    formData.append("title", form.title);
+    formData.append("location", form.location);
+    formData.append("price", Number(form.price));
+    formData.append("type", form.type);
+    formData.append("listingType", form.listingType);
+    formData.append("description", form.description);
 
-  const formData = new FormData();
-
-  formData.append("title", form.title);
-  formData.append("location", form.location);
-  formData.append("price", Number(form.price));
-  formData.append("type", form.type);
-  formData.append("listingType", form.listingType);
-  formData.append("description", form.description);
-
-  files.forEach((file) => {
-    formData.append("files", file);
-  });
-
-  try {
-    const res = await fetch("http://localhost:5000/api/Property", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-      body: formData,
+    files.forEach((file) => {
+      formData.append("files", file);
     });
 
-    if (res.ok) {
-      alert("Property added ✅");
+    try {
+      // ✅ API CALL FIXED (NO 5000)
+      const res = await api.post("/property", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
 
+      alert("Property added successfully ✅");
+      console.log(res.data);
+
+      // ✅ RESET FORM
       setForm({
         title: "",
         location: "",
@@ -65,18 +60,19 @@ const [files, setFiles] = useState([]);
       });
 
       setFiles([]);
-    } else {
-      alert("Failed ❌");
-    }
 
-  } catch (err) {
-    console.error(err);
-    alert("Server error ❌");
-  } finally {
-    setUploading(false); // 🔥 STOP LOADING
-  }
-};
-  console.log(form.imageUrls);
+    } catch (err) {
+      console.error("Error adding property:", err);
+
+      if (err.response) {
+        alert(err.response.data?.message || "Failed ❌");
+      } else {
+        alert("Server not reachable ❌");
+      }
+    } finally {
+      setUploading(false);
+    }
+  };
 
   return (
     <div className="add-property-page">
@@ -140,27 +136,28 @@ const [files, setFiles] = useState([]);
             }
           />
 
-          
+          {/* FILE UPLOAD */}
           <input
             type="file"
             multiple
             onChange={(e) => setFiles([...e.target.files])}
           />
 
-          
-          {uploading && <p className="uploading-text">Uploading images...</p>}
+          {uploading && (
+            <p className="uploading-text">Uploading images...</p>
+          )}
 
-         
+          {/* PREVIEW */}
           <div className="preview-grid">
-           {files && files.length > 0 &&
-            files.map((file, index) => (
-              <img
-                key={index}
-                src={URL.createObjectURL(file)}
-                alt="preview"
-                width="100"
-              />
-            ))}
+            {files.length > 0 &&
+              files.map((file, index) => (
+                <img
+                  key={index}
+                  src={URL.createObjectURL(file)}
+                  alt="preview"
+                  width="100"
+                />
+              ))}
           </div>
 
           <button type="submit" disabled={uploading}>
