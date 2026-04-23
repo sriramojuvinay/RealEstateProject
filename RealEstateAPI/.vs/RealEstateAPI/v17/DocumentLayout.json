@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "D:\\.NET Materials\\RealEstateProject\\RealEstateAPI\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{4087DA5F-2DA0-4E97-995C-3E8962AFD507}|RealEstateAPI\\RealEstateAPI.csproj|d:\\.net materials\\realestateproject\\realestateapi\\realestateapi\\migrations\\20260423082951_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4087DA5F-2DA0-4E97-995C-3E8962AFD507}|RealEstateAPI\\RealEstateAPI.csproj|solutionrelative:realestateapi\\migrations\\20260423082951_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{4087DA5F-2DA0-4E97-995C-3E8962AFD507}|RealEstateAPI\\RealEstateAPI.csproj|d:\\.net materials\\realestateproject\\realestateapi\\realestateapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4087DA5F-2DA0-4E97-995C-3E8962AFD507}|RealEstateAPI\\RealEstateAPI.csproj|solutionrelative:realestateapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -78,7 +82,7 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "AuthController.cs",
               "DocumentMoniker": "D:\\.NET Materials\\RealEstateProject\\RealEstateAPI\\RealEstateAPI\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "RealEstateAPI\\Controllers\\AuthController.cs",
@@ -87,11 +91,12 @@
               "ViewState": "AgIAAGUAAAAAAAAAAAAgwGIAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-23T06:22:15.453Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "BookingController.cs",
               "DocumentMoniker": "D:\\.NET Materials\\RealEstateProject\\RealEstateAPI\\RealEstateAPI\\Controllers\\BookingController.cs",
               "RelativeDocumentMoniker": "RealEstateAPI\\Controllers\\BookingController.cs",
@@ -100,11 +105,12 @@
               "ViewState": "AgIAAE0AAAAAAAAAAAAiwGkAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-23T06:30:48.154Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "ChatController.cs",
               "DocumentMoniker": "D:\\.NET Materials\\RealEstateProject\\RealEstateAPI\\RealEstateAPI\\Controllers\\ChatController.cs",
               "RelativeDocumentMoniker": "RealEstateAPI\\Controllers\\ChatController.cs",
@@ -113,24 +119,38 @@
               "ViewState": "AgIAABsAAAAAAAAAAAAYwDcAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-10T09:28:30.248Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "20260423082951_InitialCreate.cs",
+              "DocumentMoniker": "D:\\.NET Materials\\RealEstateProject\\RealEstateAPI\\RealEstateAPI\\Migrations\\20260423082951_InitialCreate.cs",
+              "RelativeDocumentMoniker": "RealEstateAPI\\Migrations\\20260423082951_InitialCreate.cs",
+              "ToolTip": "D:\\.NET Materials\\RealEstateProject\\RealEstateAPI\\RealEstateAPI\\Migrations\\20260423082951_InitialCreate.cs",
+              "RelativeToolTip": "RealEstateAPI\\Migrations\\20260423082951_InitialCreate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-23T08:29:51.319Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\.NET Materials\\RealEstateProject\\RealEstateAPI\\RealEstateAPI\\Program.cs",
               "RelativeDocumentMoniker": "RealEstateAPI\\Program.cs",
-              "ToolTip": "D:\\.NET Materials\\RealEstateProject\\RealEstateAPI\\RealEstateAPI\\Program.cs*",
-              "RelativeToolTip": "RealEstateAPI\\Program.cs*",
-              "ViewState": "AgIAAH0AAAAAAAAAAAAAAH8AAAA9AAAAAAAAAA==",
+              "ToolTip": "D:\\.NET Materials\\RealEstateProject\\RealEstateAPI\\RealEstateAPI\\Program.cs",
+              "RelativeToolTip": "RealEstateAPI\\Program.cs",
+              "ViewState": "AgIAAIoAAAAAAAAAAIBJwIkAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-23T03:53:34.161Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\.NET Materials\\RealEstateProject\\RealEstateAPI\\RealEstateAPI\\appsettings.json",
               "RelativeDocumentMoniker": "RealEstateAPI\\appsettings.json",
@@ -143,7 +163,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "PropertyController.cs",
               "DocumentMoniker": "D:\\.NET Materials\\RealEstateProject\\RealEstateAPI\\RealEstateAPI\\Controllers\\PropertyController.cs",
               "RelativeDocumentMoniker": "RealEstateAPI\\Controllers\\PropertyController.cs",
@@ -151,11 +171,12 @@
               "RelativeToolTip": "RealEstateAPI\\Controllers\\PropertyController.cs",
               "ViewState": "AgIAAA4AAAAAAAAAAAAAwH0AAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-20T03:42:38.959Z"
+              "WhenOpened": "2026-04-20T03:42:38.959Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "CreatePropertyDto.cs",
               "DocumentMoniker": "D:\\.NET Materials\\RealEstateProject\\RealEstateAPI\\RealEstateAPI\\DTOs\\CreatePropertyDto.cs",
               "RelativeDocumentMoniker": "RealEstateAPI\\DTOs\\CreatePropertyDto.cs",
@@ -163,11 +184,12 @@
               "RelativeToolTip": "RealEstateAPI\\DTOs\\CreatePropertyDto.cs",
               "ViewState": "AgIAAA8AAAAAAAAAAAAowA4AAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-20T10:22:36.974Z"
+              "WhenOpened": "2026-04-20T10:22:36.974Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "PropertyDto.cs",
               "DocumentMoniker": "D:\\.NET Materials\\RealEstateProject\\RealEstateAPI\\RealEstateAPI\\DTOs\\PropertyDto.cs",
               "RelativeDocumentMoniker": "RealEstateAPI\\DTOs\\PropertyDto.cs",
@@ -175,11 +197,12 @@
               "RelativeToolTip": "RealEstateAPI\\DTOs\\PropertyDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-20T10:00:54.94Z"
+              "WhenOpened": "2026-04-20T10:00:54.94Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "RentalController.cs",
               "DocumentMoniker": "D:\\.NET Materials\\RealEstateProject\\RealEstateAPI\\RealEstateAPI\\Controllers\\RentalController.cs",
               "RelativeDocumentMoniker": "RealEstateAPI\\Controllers\\RentalController.cs",
@@ -187,11 +210,12 @@
               "RelativeToolTip": "RealEstateAPI\\Controllers\\RentalController.cs",
               "ViewState": "AgIAAIsAAAAAAAAAAAAIwPgAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-20T03:44:42.632Z"
+              "WhenOpened": "2026-04-20T03:44:42.632Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "RentPaymentController.cs",
               "DocumentMoniker": "D:\\.NET Materials\\RealEstateProject\\RealEstateAPI\\RealEstateAPI\\Controllers\\RentPaymentController.cs",
               "RelativeDocumentMoniker": "RealEstateAPI\\Controllers\\RentPaymentController.cs",
@@ -199,11 +223,12 @@
               "RelativeToolTip": "RealEstateAPI\\Controllers\\RentPaymentController.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAxwCsAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-20T09:35:00.459Z"
+              "WhenOpened": "2026-04-20T09:35:00.459Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "RentPaymentService.cs",
               "DocumentMoniker": "D:\\.NET Materials\\RealEstateProject\\RealEstateAPI\\RealEstateAPI\\Services\\RentPaymentService.cs",
               "RelativeDocumentMoniker": "RealEstateAPI\\Services\\RentPaymentService.cs",
@@ -211,11 +236,12 @@
               "RelativeToolTip": "RealEstateAPI\\Services\\RentPaymentService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAEoAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-20T09:17:16.346Z"
+              "WhenOpened": "2026-04-20T09:17:16.346Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "RegisterDto.cs",
               "DocumentMoniker": "D:\\.NET Materials\\RealEstateProject\\RealEstateAPI\\RealEstateAPI\\DTOs\\RegisterDto.cs",
               "RelativeDocumentMoniker": "RealEstateAPI\\DTOs\\RegisterDto.cs",
@@ -223,11 +249,12 @@
               "RelativeToolTip": "RealEstateAPI\\DTOs\\RegisterDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-20T09:27:09.178Z"
+              "WhenOpened": "2026-04-20T09:27:09.178Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "RentRequest.cs",
               "DocumentMoniker": "D:\\.NET Materials\\RealEstateProject\\RealEstateAPI\\RealEstateAPI\\DTOs\\RentRequest.cs",
               "RelativeDocumentMoniker": "RealEstateAPI\\DTOs\\RentRequest.cs",
@@ -235,11 +262,12 @@
               "RelativeToolTip": "RealEstateAPI\\DTOs\\RentRequest.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-20T09:27:07.121Z"
+              "WhenOpened": "2026-04-20T09:27:07.121Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "CloudinaryService.cs",
               "DocumentMoniker": "D:\\.NET Materials\\RealEstateProject\\RealEstateAPI\\RealEstateAPI\\Services\\CloudinaryService.cs",
               "RelativeDocumentMoniker": "RealEstateAPI\\Services\\CloudinaryService.cs",
@@ -247,11 +275,12 @@
               "RelativeToolTip": "RealEstateAPI\\Services\\CloudinaryService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-20T09:26:51.927Z"
+              "WhenOpened": "2026-04-20T09:26:51.927Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "User.cs",
               "DocumentMoniker": "D:\\.NET Materials\\RealEstateProject\\RealEstateAPI\\RealEstateAPI\\Models\\User.cs",
               "RelativeDocumentMoniker": "RealEstateAPI\\Models\\User.cs",
@@ -259,11 +288,12 @@
               "RelativeToolTip": "RealEstateAPI\\Models\\User.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T06:20:40.696Z"
+              "WhenOpened": "2026-03-23T06:20:40.696Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "LoginDto.cs",
               "DocumentMoniker": "D:\\.NET Materials\\RealEstateProject\\RealEstateAPI\\RealEstateAPI\\DTOs\\LoginDto.cs",
               "RelativeDocumentMoniker": "RealEstateAPI\\DTOs\\LoginDto.cs",
@@ -271,7 +301,8 @@
               "RelativeToolTip": "RealEstateAPI\\DTOs\\LoginDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-02T09:36:04.763Z"
+              "WhenOpened": "2026-04-02T09:36:04.763Z",
+              "EditorCaption": ""
             }
           ]
         }
