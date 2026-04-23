@@ -2,9 +2,8 @@ import axios from "axios";
 
 // ✅ BASE API
 const api = axios.create({
-  baseURL: "http://localhost:8080/api",
+  baseURL: "https://realestateproject-production-e1eb.up.railway.app/api"
 });
-
 // ✅ REQUEST INTERCEPTOR (Attach Token)
 api.interceptors.request.use(
   (config) => {
