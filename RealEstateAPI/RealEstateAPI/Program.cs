@@ -84,15 +84,14 @@ builder.Services.AddSwaggerGen();
 // 🔹 CORS (IMPORTANT for React + Railway)
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowFrontend", policy =>
-    {
-        policy.WithOrigins("http://localhost:3000") // ✅ your React app
-              .AllowAnyHeader()
-              .AllowAnyMethod()
-              .AllowCredentials(); // ✅ VERY IMPORTANT for SignalR
-    });
+    options.AddPolicy("AllowFrontend",
+        policy =>
+        {
+            policy.AllowAnyOrigin()
+                  .AllowAnyMethod()
+                  .AllowAnyHeader();
+        });
 });
-
 // 🔹 Cloudinary config
 builder.Services.Configure<CloudinarySettings>(
     builder.Configuration.GetSection("CloudinarySettings"));
