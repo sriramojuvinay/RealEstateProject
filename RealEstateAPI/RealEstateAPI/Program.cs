@@ -25,9 +25,9 @@ if (!string.IsNullOrEmpty(connectionString))
 {
     builder.Services.AddDbContext<AppDbContext>(options =>
         options.UseMySql(
-            connectionString,
-            ServerVersion.AutoDetect(connectionString)
-        ));
+    connectionString,
+    ServerVersion.AutoDetect(connectionString)
+));
 }
 else
 {
@@ -134,21 +134,25 @@ app.MapHub<ChatHub>("/chatHub").RequireCors("AllowFrontend");
 
 if (!string.IsNullOrEmpty(connectionString))
 {
-    using var scope = app.Services.CreateScope();
-    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+   // using var scope = app.Services.CreateScope();
+    //var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+    //
+    //string[] roles = { "Admin", "User" };
 
-    string[] roles = { "Admin", "User" };
-
-    foreach (var role in roles)
-    {
-        if (!await roleManager.RoleExistsAsync(role))
-        {
-            await roleManager.CreateAsync(new IdentityRole(role));
-        }
-    }
+    //foreach (var role in roles)
+    //{
+      //  if (!await roleManager.RoleExistsAsync(role))
+        //{
+        //    await roleManager.CreateAsync(new IdentityRole(role));
+      //  }
+    //}
 }
 
-
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    db.Database.Migrate(); // 🔥 creates tables in Railway DB
+}
 // =======================
 // ✅ PORT FIX (RAILWAY)
 // =======================
