@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import api from "../../services/api";
 import "./RentalDashboard.css";
 import { FaTrash } from "react-icons/fa";
+import AdminRentalsSkeleton from "../../components/Skeletons/AdminRentalsSkeleton";
 
 // 🔥 MONTH NAMES
 const months = [
@@ -115,7 +116,7 @@ const RentalDashboard = () => {
   }
 };
 
-  if (loading) return <h2>Loading rentals...</h2>;
+  if (loading) return <AdminRentalsSkeleton />;
 
   return (
     <div className="rental-dashboard">

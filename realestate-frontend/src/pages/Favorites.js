@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getFavorites, removeFavorite } from "../services/api";
 import "./Favorites.css";
+import FavoritesSkeleton from "../components/Skeletons/FavoritesSkeleton";
 
 const Favorites = () => {
   const [favorites, setFavorites] = useState([]);
@@ -52,7 +53,7 @@ const Favorites = () => {
     navigate(`/property/${propertyId}`);
   };
 
-  if (loading) return <h2>Loading favorites...</h2>;
+  if (loading) return <FavoritesSkeleton />;
 
   return (
     <div className="favorites-container">

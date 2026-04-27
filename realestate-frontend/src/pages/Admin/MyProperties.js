@@ -3,6 +3,7 @@ import "./MyProperties.css";
 import { useNavigate } from "react-router-dom";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import api from "../../services/api"; // ✅ IMPORTANT FIX
+import MyPropertiesSkeleton from "../../components/Skeletons/MyPropertiesSkeleton";
 
 const MyProperties = () => {
   const [properties, setProperties] = useState([]);
@@ -37,7 +38,7 @@ const MyProperties = () => {
     }
   };
 
-  if (loading) return <h3 className="loading">Loading...</h3>;
+  if (loading) return <MyPropertiesSkeleton />;
 
   return (
     <div className="my-properties">

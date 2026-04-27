@@ -1,0 +1,241 @@
+.bookings-skeleton-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* CARD */
+.booking-skeleton-card {
+  width: 100%;
+  max-width: 500px;
+
+  background: #f5f5f5;
+  padding: 25px;
+  margin-bottom: 30px;
+
+  border-radius: 15px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* IMAGE */
+.skeleton-image {
+  margin-bottom: 10px;
+}
+
+/* INFO */
+.skeleton-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+/* DIVIDER */
+.divider {
+  height: 1px;
+  background: #ddd;
+  margin: 10px 0;
+}
+
+.dashboard-skeleton {
+  padding: 20px;
+}
+
+/* TITLE */
+.dashboard-title {
+  margin-bottom: 15px;
+}
+
+/* STATS LIST */
+.stats-list {
+  margin-bottom: 25px;
+}
+
+.stat-item {
+  margin-bottom: 10px;
+}
+
+/* CARDS */
+.cards-container {
+  display: flex;
+  gap: 20px;
+}
+
+.dashboard-card {
+  flex: 1;
+  padding: 25px;
+  border-radius: 15px;
+
+  /* match your blue gradient feel */
+  background: linear-gradient(135deg, #2f4ecb, #3a66db);
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.myprops-skeleton-container {
+  padding: 20px;
+}
+
+/* HEADER */
+.myprops-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+/* GRID */
+.myprops-grid {
+  display: flex;
+  gap: 20px;
+}
+
+/* CARD */
+.myprops-card {
+  flex: 1;
+  background: #f5f5f5;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* IMAGE */
+.image-wrapper {
+  position: relative;
+}
+
+/* BADGE */
+.badge-skeleton {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+/* BUTTON ROW */
+.btn-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.rentals-skeleton-container {
+  padding: 20px;
+}
+
+/* TITLE */
+.rentals-title {
+  margin-bottom: 20px;
+}
+
+/* HEADER */
+.rentals-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 0;
+  border-bottom: 2px solid #ddd;
+  margin-bottom: 10px;
+}
+
+/* ROW */
+.rentals-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+}
+
+/* PROPERTY CELL */
+.property-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 15%;
+}
+
+/* ACTION BUTTONS */
+.action-buttons {
+  display: flex;
+  gap: 10px;
+  width: 15%;
+}
+
+.chat-skeleton-container {
+  padding: 20px;
+}
+
+/* TITLE */
+.chat-title {
+  margin-bottom: 20px;
+}
+
+/* CARD */
+.chat-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 15px;
+  margin-bottom: 15px;
+
+  background: #f5f5f5;
+  border-radius: 10px;
+
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+/* LEFT */
+.chat-left {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* RIGHT BUTTON */
+.chat-right {
+  display: flex;
+  align-items: center;
+}
+
+.favorites-skeleton-container {
+  padding: 20px;
+}
+
+/* TITLE */
+.favorites-title {
+  margin-bottom: 20px;
+}
+
+/* CARD */
+.favorite-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 15px;
+  margin-bottom: 15px;
+
+  background: #f5f5f5;
+  border-radius: 12px;
+
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+/* CENTER CONTENT */
+.favorite-info {
+  flex: 1;
+  margin-left: 15px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}

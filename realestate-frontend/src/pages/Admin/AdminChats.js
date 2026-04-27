@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./AdminChats.css";
 import api from "../../services/api"; // ✅ FIXED
-
+import AdminChatSkeleton from "../../components/Skeletons/AdminChatSkeleton";
 const AdminChats = () => {
   const [conversations, setConversations] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -23,7 +23,7 @@ const AdminChats = () => {
     fetchChats();
   }, []);
 
-  if (loading) return <h3 style={{ padding: "20px" }}>Loading chats...</h3>;
+  if (loading) return <AdminChatSkeleton /  >;
 
   return (
     <div className="admin-chats">

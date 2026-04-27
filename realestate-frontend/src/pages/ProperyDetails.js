@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import {
   getPropertyById,
   bookProperty,
   checkBooking
 } from "../services/api";
 import BookingSuccessModal from "../components/BookingSuccessModal";
+import PropertyDetailsSkeleton from "../components/Skeletons/PropertyDetailsSkeleton";
 import { toast } from "react-toastify";
 import api from "../services/api";
 import "./PropertyDetails.css";
@@ -13,6 +14,9 @@ import "./PropertyDetails.css";
 const PropertyDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const passedProperty = location.state;
 
   const [property, setProperty] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -24,10 +28,19 @@ const PropertyDetails = () => {
 
   const [showModal, setShowModal] = useState(false);
 
-  // 🔥 FETCH PROPERTY
+  // 🔥 FETCH PROPERTY (OPTIMIZED)
   useEffect(() => {
     const fetchProperty = async () => {
       try {
+        // ✅ USE PASSED DATA (FAST)
+        if (passedProperty) {
+          setProperty(passedProperty);
+          setImages(passedProperty.imageUrls || []);
+          setLoading(false);
+          return;
+        }
+
+        // 🔄 FALLBACK API CALL
         const data = await getPropertyById(id);
         if (!data) return;
 
@@ -42,9 +55,9 @@ const PropertyDetails = () => {
     };
 
     fetchProperty();
-  }, [id]);
+  }, [id, passedProperty]);
 
-  // 🔥 AUTO IMAGE SLIDER
+  // 🔥 IMAGE SLIDER
   useEffect(() => {
     if (images.length === 0) return;
 
@@ -144,15 +157,18 @@ const PropertyDetails = () => {
     }
   };
 
-  if (loading) return <h2>Loading...</h2>;
-  if (!property) return <h2>Property not found ❌</h2>;
-
   const userRole = localStorage.getItem("role");
 
-  return (
-    <div className="details-container">
+  // ✅ SKELETON
+  if (loading) return <PropertyDetailsSkeleton />;
 
-      {/* IMAGE SLIDER */}
+  // ❌ NOT FOUND
+  if (!property) return <h2>Property not found ❌</h2>;
+
+  return (
+    <div className="details-container fade-in">
+
+      {/* IMAGE */}
       <div className="details-image-container">
         <img
           src={images[index] || "/default-property.jpg"}
@@ -163,6 +179,7 @@ const PropertyDetails = () => {
 
       {/* DETAILS */}
       <div className="details-info">
+
         <h2>{property.title}</h2>
         <p>📍 {property.location}</p>
         <p>₹{property.price}</p>

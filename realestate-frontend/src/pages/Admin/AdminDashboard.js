@@ -1,6 +1,7 @@
-     import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import api from "../../services/api"; 
 import "./AdminDashboard.css";
+import AdminDashboardSkeleton from "../../components/Skeletons/AdminDashboardSkeleton";
 
 const AdminDashboard = () => {
   const [stats, setStats] = useState({
@@ -50,7 +51,7 @@ const AdminDashboard = () => {
     fetchEarnings();
   }, []);
 
-  if (loading) return <h2>Loading stats...</h2>;
+  if (loading) return <AdminDashboardSkeleton />;
 
   return (
     <div style={{ padding: "20px" }}>

@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import { toast } from "react-toastify";
 import "./AdminBookings.css";
 import api from "../services/api";
+import AdminBookingsSkeleton from "../components/Skeletons/AdminBookingsSkeleton";
 
 const AdminBookings = () => {
   const [bookings, setBookings] = useState([]);
@@ -60,7 +61,7 @@ const AdminBookings = () => {
     }
   };
 
-  if (loading) return <h2>Loading bookings...</h2>;
+  if (loading) return <AdminBookingsSkeleton />
 
   return (
     <div className="admin-bookings">

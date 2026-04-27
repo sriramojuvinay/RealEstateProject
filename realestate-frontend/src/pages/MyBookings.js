@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getUserBookings, cancelBooking } from "../services/api";
+import MyBookingsSkeleton from "../components/Skeletons/MyBookingsSkeleton";
 import "./MyBookings.css";
 
 const MyBookings = () => {
@@ -20,16 +21,13 @@ const MyBookings = () => {
 
         const res = await getUserBookings(userId);
 
-        
         const bookingData = res || [];
 
-       
         const filtered = bookingData.filter(
           (b) => b.status !== "Rejected"
         );
 
         setBookings(Array.isArray(filtered) ? filtered : []);
-
       } catch (error) {
         console.error("Error fetching bookings:", error);
         setBookings([]);
@@ -73,14 +71,16 @@ const MyBookings = () => {
           : (prev[id] || 0) - 1,
     }));
   };
-
-  if (loading) return <h2>Loading bookings...</h2>;
+  if (loading) return <MyBookingsSkeleton />;
 
   return (
     <div className="bookings-container">
       <h2 className="bookings-title">My Bookings</h2>
 
-      {!Array.isArray(bookings) || bookings.length === 0 ? (
+      {/* ✅ SKELETON */}
+      {loading ? (
+        <MyBookingsSkeleton />
+      ) : !Array.isArray(bookings) || bookings.length === 0 ? (
         <p className="no-bookings">No bookings found ❌</p>
       ) : (
         bookings.map((b) => {
@@ -94,8 +94,8 @@ const MyBookings = () => {
 
           return (
             <div className="booking-card" key={b.id}>
-
               
+              {/* IMAGE */}
               <div className="booking-image-container">
                 <img
                   src={currentImage}
@@ -125,7 +125,7 @@ const MyBookings = () => {
                 )}
               </div>
 
-             
+              {/* INFO */}
               <div className="booking-info">
                 <h3>{b.property?.title}</h3>
                 <p>📍 {b.property?.location}</p>
@@ -135,7 +135,6 @@ const MyBookings = () => {
                   📅 {new Date(b.bookingDate).toLocaleDateString()}
                 </p>
 
-                {/* STATUS */}
                 <p className={`status ${b.status?.toLowerCase()}`}>
                   <b>Status:</b> {b.status}
                 </p>
@@ -149,7 +148,7 @@ const MyBookings = () => {
                 )}
               </div>
 
-             
+              {/* CANCEL */}
               {b.status !== "Approved" && (
                 <button
                   className="cancel-btn"

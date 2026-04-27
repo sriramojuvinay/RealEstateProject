@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getProperties } from "../services/api";
 import PropertyCard from "../components/PropertyCard";
 import "./Properties.css";
-import PropertySkeleton from "../components/PropertySkeleton";
+import PropertySkeleton from "../components/Skeletons/PropertySkeleton";
 
 const Properties = () => {
   const [properties, setProperties] = useState([]);
